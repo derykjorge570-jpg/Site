@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio acadêmico de projetos e atividades de Programação Front-end do curso TADS 2026."
+    />
+    <title>Portfólio Front-end | TADS 2026</title>
+    <style>
+      :root {
+        --bg: #06141f;
+        --bg-soft: #0c1d2d;
+        --panel: rgba(11, 27, 40, 0.9);
+        --panel-alt: #102638;
+        --border: rgba(118, 171, 220, 0.2);
+        --primary: #5ee7ff;
+        --primary-strong: #32c7f3;
+        --accent: #8b5cf6;
+        --text: #eaf6ff;
+        --muted: #a9c2d4;
+        --success: #78e3a6;
+        --warning: #f0c36b;
+        --shadow: 0 20px 40px rgba(2, 8, 20, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(94, 231, 255, 0.12), transparent 30%),
+          linear-gradient(180deg, var(--bg) 0%, #081a2b 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        padding: 1.25rem 0;
+        border-bottom: 1px solid var(--border);
+        background: rgba(6, 20, 31, 0.7);
+        backdrop-filter: blur(8px);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-mark {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.8rem;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: #03131e;
+        font-weight: 800;
+        box-shadow: 0 10px 25px rgba(94, 231, 255, 0.35);
+      }
+
+      .repo-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(94, 231, 255, 0.35);
+        color: var(--text);
+        text-decoration: none;
+        background: rgba(94, 231, 255, 0.08);
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      }
+
+      .repo-link:hover,
+      .repo-link:focus-visible {
+        transform: translateY(-1px);
+        border-color: rgba(94, 231, 255, 0.7);
+        background: rgba(94, 231, 255, 0.14);
+      }
+
+      .hero {
+        padding: 4rem 0 3rem;
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(94, 231, 255, 0.08);
+        border: 1px solid rgba(94, 231, 255, 0.25);
+        color: var(--primary);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 5vw, 4rem);
+        line-height: 1.05;
+        margin: 1rem 0 1rem;
+      }
+
+      .highlight {
+        color: var(--primary);
+      }
+
+      .hero-text {
+        font-size: 1.08rem;
+        max-width: 60ch;
+        color: var(--muted);
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.75rem;
+      }
+
+      .pill {
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.08);
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .hero-card {
+        background: linear-gradient(180deg, rgba(16, 38, 56, 0.92), rgba(9, 27, 38, 0.92));
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+      }
+
+      .mini-stack {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .stack-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.95rem 1rem;
+        border-radius: 1rem;
+        background: rgba(148, 163, 184, 0.04);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .stack-label {
+        color: var(--muted);
+      }
+
+      .stack-value {
+        font-weight: 700;
+      }
+
+      .projects {
+        padding: 1rem 0 4rem;
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .toolbar-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+
+      .search-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: rgba(10, 26, 39, 0.9);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.7rem 1rem;
+        min-width: min(100%, 320px);
+      }
+
+      .search-wrap input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--text);
+        font-size: 1rem;
+      }
+
+      .search-wrap input::placeholder {
+        color: var(--muted);
+      }
+
+      .count-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.25rem;
+        height: 2.25rem;
+        padding: 0.2rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(94, 231, 255, 0.1);
+        color: var(--primary);
+        border: 1px solid rgba(94, 231, 255, 0.2);
+        font-weight: 700;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        padding: 1.25rem;
+        border-radius: 1.25rem;
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(16, 30, 42, 0.82), rgba(9, 23, 34, 0.92));
+        box-shadow: 0 10px 24px rgba(2, 8, 20, 0.22);
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover,
+      .card:focus-within {
+        transform: translateY(-4px);
+        border-color: rgba(94, 231, 255, 0.35);
+        box-shadow: 0 18px 32px rgba(2, 8, 20, 0.3);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .project-icon {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.9rem;
+        display: grid;
+        place-items: center;
+        background: rgba(94, 231, 255, 0.08);
+        border: 1px solid rgba(94, 231, 255, 0.24);
+        font-size: 1.4rem;
+      }
+
+      .project-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.38rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .project-status[data-status="Publicado"] {
+        background: rgba(120, 227, 166, 0.12);
+        color: var(--success);
+        border: 1px solid rgba(120, 227, 166, 0.3);
+      }
+
+      .project-status[data-status="Em desenvolvimento"] {
+        background: rgba(240, 195, 107, 0.12);
+        color: var(--warning);
+        border: 1px solid rgba(240, 195, 107, 0.3);
+      }
+
+      .project-name {
+        margin: 0 0 0.5rem;
+        font-size: 1.35rem;
+      }
+
+      .project-description {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      .tech {
+        padding: 0.42rem 0.62rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        color: var(--text);
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.24);
+      }
+
+      .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: auto;
+        padding-top: 1rem;
+      }
+
+      .button,
+      .button-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        min-height: 2.75rem;
+        padding: 0.72rem 1rem;
+        border-radius: 0.85rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.2s ease, filter 0.2s ease;
+      }
+
+      .button {
+        background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+        color: #071821;
+      }
+
+      .button-secondary {
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .button:hover,
+      .button:focus-visible,
+      .button-secondary:hover,
+      .button-secondary:focus-visible {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .empty-state {
+        display: none;
+        padding: 2rem 1.25rem;
+        border: 1px dashed rgba(148, 163, 184, 0.4);
+        border-radius: 1rem;
+        background: rgba(148, 163, 184, 0.03);
+        text-align: center;
+        color: var(--muted);
+      }
+
+      .empty-state.visible {
+        display: block;
+      }
+
+      footer {
+        padding: 2rem 0 3rem;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      .footer-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .footer-row a {
+        color: var(--primary);
+      }
+
+      @media (max-width: 720px) {
+        .topbar-inner,
+        .toolbar,
+        .footer-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .repo-link {
+          width: 100%;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+        }
+
+        .search-wrap {
+          width: 100%;
+          min-width: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand" aria-label="Portfólio Front-end TADS 2026">
+          <span class="brand-mark" aria-hidden="true">PF</span>
+          <span>Portfólio Front-end | TADS 2026</span>
+        </div>
+        <a
+          class="repo-link"
+          href="https://github.com/leandrofepi/prog_front_end_tads_26"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Repositório no GitHub ↗
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-content">
+          <div>
+            <span class="tag">📚 Projeto acadêmico</span>
+            <h1>
+              Portfólio de <span class="highlight">projetos front-end</span>
+              da turma TADS 2026.
+            </h1>
+            <p class="hero-text">
+              Este repositório reúne atividades, laboratórios e projetos desenvolvidos na disciplina de
+              Programação Front-end. A proposta do portfólio é apresentar, de forma organizada e visualmente
+              clara, cada entrega do curso e facilitar o acesso ao código e às páginas produzidas.
+            </p>
+            <div class="hero-meta" aria-label="Resumo do repositório">
+              <span class="pill">📁 1 projeto inicial</span>
+              <span class="pill">🧩 HTML, CSS e JavaScript</span>
+              <span class="pill">🚀 GitHub Pages</span>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Resumo das tecnologias e projetos">
+            <div class="mini-stack">
+              <div class="stack-row">
+                <span class="stack-label">Repositório</span>
+                <span class="stack-value">prog_front_end_tads_26</span>
+              </div>
+              <div class="stack-row">
+                <span class="stack-label">Projetos</span>
+                <span class="stack-value" id="summaryProjects">0</span>
+              </div>
+              <div class="stack-row">
+                <span class="stack-label">Foco</span>
+                <span class="stack-value">Interface e UX</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="projects" aria-labelledby="lista-projetos">
+        <div class="container">
+          <div class="toolbar">
+            <div class="toolbar-title" id="lista-projetos">Projetos cadastrados</div>
+            <label class="search-wrap" for="buscaProjetos">
+              <span aria-hidden="true">🔎</span>
+              <input
+                id="buscaProjetos"
+                type="search"
+                placeholder="Buscar por nome, descrição ou tecnologia"
+                aria-label="Buscar projetos"
+              />
+            </label>
+            <div class="count-badge" id="contadorProjetos" aria-live="polite">0</div>
+          </div>
+
+          <div id="cardsProjetos" class="cards" aria-live="polite"></div>
+
+          <div id="emptyState" class="empty-state" aria-live="polite">
+            Nenhum projeto corresponde à busca realizada. Tente outro termo ou limpe a pesquisa.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-row">
+        <span>Disciplina: Programação Front-end | TADS 2026</span>
+        <a href="https://github.com/leandrofepi/prog_front_end_tads_26" target="_blank" rel="noreferrer">
+          GitHub do repositório
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      // Centralize as informações dos projetos nesta lista.
+      // Para adicionar um novo projeto, basta inserir um novo objeto seguindo o mesmo padrão.
+      const projetos = [
+        {
+          nome: "Tecboard",
+          pasta: "tecboard",
+          descricao:
+            "Landing page institucional da solução Tecboard, com foco em monitoramento em tempo real e alertas inteligentes para aplicações.",
+          tecnologias: ["HTML", "CSS"],
+          status: "Em desenvolvimento",
+          publicado: false,
+          url: "./tecboard/",
+          codigo: "https://github.com/leandrofepi/prog_front_end_tads_26/tree/main/tecboard"
+        }
+      ];
+
+      const cardsContainer = document.getElementById("cardsProjetos");
+      const emptyState = document.getElementById("emptyState");
+      const contadorProjetos = document.getElementById("contadorProjetos");
+      const summaryProjects = document.getElementById("summaryProjects");
+      const buscaProjetos = document.getElementById("buscaProjetos");
+
+      function renderizarProjetos(filtro = "") {
+        const termo = filtro.trim().toLowerCase();
+        const itensFiltrados = projetos.filter((projeto) => {
+          if (!termo) return true;
+
+          const texto = [
+            projeto.nome,
+            projeto.descricao,
+            projeto.tecnologias.join(" "),
+            projeto.status
+          ]
+            .join(" ")
+            .toLowerCase();
+
+          return texto.includes(termo);
+        });
+
+        cardsContainer.innerHTML = "";
+
+        if (itensFiltrados.length === 0) {
+          emptyState.classList.add("visible");
+        } else {
+          emptyState.classList.remove("visible");
+        }
+
+        itensFiltrados.forEach((projeto) => {
+          const card = document.createElement("article");
+          card.className = "card";
+
+          const statusTexto = projeto.publicado ? "Publicado" : "Em desenvolvimento";
+
+          const techMarkup = projeto.tecnologias
+            .map((tech) => `<span class="tech">${tech}</span>`)
+            .join("");
+
+          card.innerHTML = `
+            <div class="card-header">
+              <div class="project-icon" aria-hidden="true">💻</div>
+              <span class="project-status" data-status="${statusTexto}">${statusTexto}</span>
+            </div>
+            <h2 class="project-name">${projeto.nome}</h2>
+            <p class="project-description">${projeto.descricao}</p>
+            <div class="tech-list" aria-label="Tecnologias do projeto">${techMarkup}</div>
+            <div class="card-actions">
+              <a class="button" href="${projeto.url}" target="${projeto.publicado ? "_blank" : "_self"}" rel="noreferrer">
+                Visualizar projeto
+              </a>
+              <a class="button-secondary" href="${projeto.codigo}" target="_blank" rel="noreferrer">
+                Ver código-fonte
+              </a>
+            </div>
+          `;
+
+          cardsContainer.appendChild(card);
+        });
+
+        contadorProjetos.textContent = String(itensFiltrados.length);
+      }
+
+      buscaProjetos.addEventListener("input", (event) => {
+        renderizarProjetos(event.target.value);
+      });
+
+      summaryProjects.textContent = String(projetos.length);
+      renderizarProjetos();
+    </script>
+  </body>
+</html>
